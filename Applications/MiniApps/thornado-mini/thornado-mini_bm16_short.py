@@ -20,7 +20,7 @@ class ThornadoMiniTest(hack.HackathonBase):
 
     # Define Execution
     # Binary to run
-    executable = 'clover_leaf'
+    executable = 'bin/DeleptonizationProblem1D_mymachine'
     # Command line options to pass
     executable_opts = []
     # Where the output is written to
