@@ -1,0 +1,12 @@
+diff --unified --recursive --text upstream_source/Modules/InputOutput/InputOutputModule.f90 patched_source/Modules/InputOutput/InputOutputModule.f90
+--- upstream_source/Modules/InputOutput/InputOutputModule.f90	2021-07-12 16:16:57.555466461 +0000
++++ patched_source/Modules/InputOutput/InputOutputModule.f90	2021-07-12 18:54:28.777885297 +0000
+@@ -30,7 +30,7 @@
+   PRIVATE
+ 
+   CHARACTER(9),  PARAMETER :: &
+-    OutputDirectory = '../Output'
++    OutputDirectory = './output'
+   CHARACTER(14), PARAMETER :: &
+     GeometrySuffix = 'GeometryFields'
+   CHARACTER(11), PARAMETER :: &
