@@ -12,6 +12,11 @@ class ThornadoMiniTest(hack.HackathonBase):
     log_app_name = 'thornado-mini'
     log_test_name = 'default'
 
+    preruns_cmds = [
+        "wget -O EquationOfStateTable.h5 https://code.ornl.gov/m2o/thornado-tables/-/raw/master/mini-app/wl-EOS-SFHo-15-25-50-noBCK.h5",
+        "wget -O OpacityTable.h5 https://code.ornl.gov/m2o/thornado-tables/-/raw/master/mini-app/wl-Op-SFHo-15-25-50-noBCK.h5",
+    ]
+
     # Define Execution
     # Binary to run
     executable = 'bin/DeleptonizationProblem1D_mymachine'
@@ -25,7 +30,7 @@ class ThornadoMiniTest(hack.HackathonBase):
     # Parameters - Compilers - Defined as their Spack specs (use spec or hash)
     spec = parameter([
         'thornado-mini@1.0 %gcc@10.3.0',     # Thornado with the gcc compiler
-        'thornado-mini@1.0 %arm', # Thornado with the Arm compiler
+        'thornado-mini@1.0 %arm@21.0.0.879', # Thornado with the Arm compiler
     ])
 
     # Parameters - MPI / Threads - Used for scaling studies
