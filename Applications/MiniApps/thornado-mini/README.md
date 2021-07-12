@@ -2,7 +2,7 @@
 
 **Description:** Solve the equation of radiative transfer in the multi-group two-moment approximation
 
-**URL:** https://github.com/ECP-Astro/thornado_min 
+**URL:** https://github.com/ECP-Astro/thornado_mini 
 
 **Team:**  
 
