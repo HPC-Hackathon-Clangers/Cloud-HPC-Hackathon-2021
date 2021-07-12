@@ -1,0 +1,3 @@
+[submodule "Applications/MiniApps/thornado-mini/thornado_mini"]
+	path = Applications/MiniApps/thornado-mini/thornado_mini
+	url = https://github.com/ECP-Astro/thornado_mini.git
