@@ -47,20 +47,16 @@ class ThornadoMiniTest(hack.HackathonBase):
     @run_before('sanity')
     def set_sanity_patterns(self):
 
-       # Use the logfile for validation testing and performance
-
-       # Validation at step 87 (BM_short)
-       # Regex - Volume   Mass   Density   Pressure   Internal Energy   Kinetic Energy   Total Energy
-       sol_regex = r'\s+step:\s+87\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\S+)'
-       # Validate for kinetic energy (6)
-       kinetic_energy = sn.extractsingle(sol_regex, self.logfile, 6, float)
-
-       # expected = 0.3075
+       global_electron_regex = r'Global Electron Number =\s+(\S+)'
+       # Get the final electron number
+       electron_number = sn.extractall(global_electron_regex, self.logfile, 1, float)[-1]
+       # expected ~3.8765834888E+057, given on first run
        expected_lower = 0.30745
-       expected_upper = 0.30755
+       expected_lower = 3.8765825 * (10 ^ 57)
+       expected_upper = 3.8765835 * (10 ^ 57)
 
        # Perform a bounded assert
-       self.sanity_patterns = sn.assert_bounded(kinetic_energy, expected_lower, expected_upper)
+       self.sanity_patterns = sn.assert_bounded(electron_number, expected_lower, expected_upper)
 
        # Performance Testing - FOM Total Time units 's'
        # We dont set an expected value
