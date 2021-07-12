@@ -2,9 +2,9 @@
 
 **Description:** Solve the equation of radiative transfer in the multi-group two-moment approximation
 
-**URL:** https://github.com/ECP-Astro/thornado_min 
+**URL:** https://github.com/ECP-Astro/thornado_mini 
 
-**Team:**  
+**Team:** The Clangers
 
 ## Compilation
 
@@ -12,7 +12,7 @@
 
 Details of any changes to the Spack recipe used.
 
-Git commit hash of checkout for pacakage:
+Git commit hash of checkout for package:
 
 Pull request for Spack recipe changes:
 
