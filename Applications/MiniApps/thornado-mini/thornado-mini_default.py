@@ -13,17 +13,18 @@ class ThornadoMiniTest(hack.HackathonBase):
     log_test_name = 'default'
 
     preruns_cmds = [
+        "mkdir -p ../Output",
         "wget -O EquationOfStateTable.h5 https://code.ornl.gov/m2o/thornado-tables/-/raw/master/mini-app/wl-EOS-SFHo-15-25-50-noBCK.h5",
         "wget -O OpacityTable.h5 https://code.ornl.gov/m2o/thornado-tables/-/raw/master/mini-app/wl-Op-SFHo-15-25-50-noBCK.h5",
     ]
 
     # Define Execution
     # Binary to run
-    executable = 'bin/DeleptonizationProblem1D_mymachine'
+    executable = 'DeleptonizationProblem1D_mymachine'
     # Command line options to pass
-    executable_opts = []
+    executable_opts = ["> thornado-mini.log"]
     # Where the output is written to
-    logfile = 'thornado.out'
+    logfile = 'thornado-mini.log'
     # Store the output file (used for validation later)
     keep_files = [logfile]
 
@@ -68,7 +69,7 @@ class ThornadoMiniTest(hack.HackathonBase):
        }
 
        # CloverLeaf prints the 'Wall clock' every timestep - so extract all lines matching the regex
-       pref_regex = r'\s+Wall clock\s+(\S+)'
+       pref_regex = r'[^d]t = ([0-9]+\.[0-9]+E[+-][0-9]+) ms'
        self.perf_patterns = {
                'Total Time': sn.extractsingle(pref_regex, self.logfile, 1, float, item=-1)
        }
