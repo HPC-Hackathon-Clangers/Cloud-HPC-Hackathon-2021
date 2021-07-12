@@ -10,13 +10,7 @@ class ThornadoMiniTest(hack.HackathonBase):
     # Logging Variables
     log_team_name = 'TheClangers'
     log_app_name = 'thornado-mini'
-    # TODO: Change me
-    log_test_name = 'BM16_short'
-
-    # TODO: Do we need this for thornado?
-    # Define test case
-    # In this case we download the file from GitHub and write as clover.in - the expected input file
-    # prerun_cmds = ['wget -O clover.in https://raw.githubusercontent.com/UK-MAC/CloverLeaf_ref/master/InputDecks/clover_bm16_short.in']
+    log_test_name = 'default'
 
     # Define Execution
     # Binary to run
@@ -24,22 +18,18 @@ class ThornadoMiniTest(hack.HackathonBase):
     # Command line options to pass
     executable_opts = []
     # Where the output is written to
-    logfile = 'clover.out'
+    logfile = 'thornado.out'
     # Store the output file (used for validation later)
     keep_files = [logfile]
-
 
     # Parameters - Compilers - Defined as their Spack specs (use spec or hash)
     spec = parameter([
         'thornado-mini@1.0 %gcc@10.3.0',     # Thornado with the gcc compiler
+        'thornado-mini@1.0 %arm', # Thornado with the Arm compiler
     ])
 
     # Parameters - MPI / Threads - Used for scaling studies
     parallelism = parameter([
-        { 'nodes' : 1, 'mpi' : 1, 'omp' : 1},
-        { 'nodes' : 1, 'mpi' : 2, 'omp' : 1},
-        { 'nodes' : 1, 'mpi' : 4, 'omp' : 1},
-        { 'nodes' : 1, 'mpi' : 8, 'omp' : 1},
         { 'nodes' : 1, 'mpi' : 16, 'omp' : 1},
         { 'nodes' : 1, 'mpi' : 32, 'omp' : 1},
         { 'nodes' : 1, 'mpi' : 64, 'omp' : 1},
