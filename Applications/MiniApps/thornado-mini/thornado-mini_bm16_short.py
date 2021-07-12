@@ -31,6 +31,7 @@ class CloverLeafTest(hack.HackathonBase):
 
     # Parameters - Compilers - Defined as their Spack specs (use spec or hash)
     spec = parameter([
+        'thornado-mini %gcc@10.3.0',     # Thornado with the ff compiler
         'thornado-mini %ff',     # Thornado with the ff compiler
     ])
 
